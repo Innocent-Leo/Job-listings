@@ -1,13 +1,13 @@
-// import FilterBar from "./components/FilterBar";
-// import Header from "./components/Header";
-// import JobList from "./components/JobList";
+import Header from "./components/Header";
+import JobList from "./components/JobList";
 
 const App = () => {
   return (
-    <div>
-      {/* <Header />
-      <FilterBar />
-      <JobList /> */}
+    <div className="bg-light-green">
+      <Header />
+      <div className="mx-auto max-w-6xl">
+        <JobList />
+      </div>
     </div>
   );
 };

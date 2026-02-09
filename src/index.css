@@ -1,3 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
 
 @import "tailwindcss";
+
+body {
+  font-family: "League Spartan", sans-serif;
+  @apply md:text-lg;
+}
+
+@theme {
+  --color-green: hsl(180, 29%, 50%);
+  --color-light-green: hsl(180, 52%, 96%);
+  --color-dark-green: hsl(180, 14%, 20%);
+  --color-grey: hsl(180, 8%, 52%);
+}
+
+.tags {
+  @apply text-green bg-light-green hover:bg-grey cursor-pointer rounded-sm px-3 py-1 font-bold hover:text-white;
+}
+
+.new-featured {
+  @apply h-7 rounded-full px-2 py-0.5 font-bold text-white uppercase;
+}
+
+.tag-box {
+  @apply bg-light-green text-green flex items-center overflow-hidden rounded-md font-semibold;
+}
