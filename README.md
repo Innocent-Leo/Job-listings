@@ -5,7 +5,6 @@ Users can filter jobs by role, level, languages and tools.
 
 ### Tech Stack
 
-- React
+- React(vite)
 - TypeScript
 - Tailwind CSS
-- Vite
