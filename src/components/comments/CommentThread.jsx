@@ -1,14 +1,18 @@
 import React from "react";
 import CommentCard from "./CommentCard";
 
-const CommentThread = ({ comment }) => {
+const CommentThread = ({ comment, currentUser }) => {
   return (
     <>
-      <CommentCard comment={comment} />
+      <CommentCard comment={comment} currentUser={currentUser} />
       {comment.replies?.length > 0 && (
-        <div className="ml-8 space-y-4 border-l-2 border-gray-200 pl-8">
+        <div className="space-y-4 border-l-2 border-gray-200 pl-4 sm:ml-8 sm:pl-8">
           {comment.replies.map((reply) => (
-            <CommentCard key={reply.id} comment={reply} />
+            <CommentCard
+              key={reply.id}
+              comment={reply}
+              currentUser={currentUser}
+            />
           ))}
         </div>
       )}

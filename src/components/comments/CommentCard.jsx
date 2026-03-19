@@ -1,7 +1,9 @@
 import React from "react";
-import { FaPlus, FaMinus, FaReply } from "react-icons/fa6";
+import { FaPlus, FaMinus, FaReply, FaTrash, FaPen } from "react-icons/fa6";
 
-const CommentCard = ({ comment }) => {
+const CommentCard = ({ comment, currentUser, isReply = true }) => {
+  const isOwnComment = comment.user.username === currentUser.username;
+
   return (
     <div className="mx-auto flex max-w-2xl gap-4 rounded-lg bg-white p-4">
       {/* Score section for large screens */}
@@ -9,9 +11,11 @@ const CommentCard = ({ comment }) => {
         <button>
           <FaPlus className="w-2.5 text-pink-400" />
         </button>
+
         <span className="text-sm font-bold text-purple-800">
           {comment.score}
         </span>
+
         <button>
           <FaMinus className="w-2.5 text-pink-400" />
         </button>
@@ -22,18 +26,50 @@ const CommentCard = ({ comment }) => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img className="w-8" src={comment.user.image.webp} alt="avatar" />
+            <img className="w-9" src={comment.user.image.webp} alt="avatar" />
+
             <span className="font-bold">{comment.user.username}</span>
+
+            {isOwnComment && (
+              <span className="rounded-xs bg-purple-800 px-2 pb-0.5 text-xs font-medium text-white">
+                you
+              </span>
+            )}
+
             <span className="text-sm text-gray-500">{comment.createdAt}</span>
           </div>
 
           {/* Reply button for large screens */}
-          <div className="hidden items-center gap-1.5 font-bold text-purple-800 sm:flex">
-            <FaReply className="w-3" />
-            <button>Reply</button>
+          <div className="hidden sm:block">
+            {isOwnComment ? (
+              <div className="flex items-center gap-4">
+                <button className="flex items-center gap-1.5 text-sm font-bold text-red-400 hover:opacity-50">
+                  <FaTrash />
+                  Delete
+                </button>
+                <button className="flex items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50">
+                  <FaPen />
+                  Edit
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50">
+                <FaReply className="w-3" />
+                <button>Reply</button>
+              </div>
+            )}
           </div>
         </div>
-        <p>{comment.content}</p>
+
+        {/* Text */}
+        <p>
+          {isReply && "replyingTo" in comment && (
+            <span className="font-semibold text-purple-800">
+              @{comment.replyingTo}{" "}
+            </span>
+          )}
+          {comment.content}
+        </p>
 
         {/* Score and Reply button for small screens */}
         <div className="flex items-center justify-between sm:hidden">
@@ -51,10 +87,27 @@ const CommentCard = ({ comment }) => {
           </div>
 
           {/* Reply button for small screens */}
-          <div className="flex items-center gap-1.5 font-bold text-purple-800 sm:hidden">
+          {isOwnComment ? (
+            <div className="flex items-center gap-4">
+              <button className="flex items-center gap-1.5 text-sm font-bold text-red-400 hover:opacity-50">
+                <FaTrash />
+                Delete
+              </button>
+              <button className="flex items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50">
+                <FaPen />
+                Edit
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50 sm:hidden">
+              <FaReply className="w-3" />
+              <button>Reply</button>
+            </div>
+          )}
+          {/* <div className="flex items-center gap-1.5 text-sm font-bold text-purple-800 sm:hidden">
             <FaReply className="w-3" />
             <button>Reply</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
