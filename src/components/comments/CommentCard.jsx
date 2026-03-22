@@ -9,7 +9,7 @@ const CommentCard = ({ comment, currentUser, isReply = true }) => {
       {/* Score section for large screens */}
       <div className="hidden h-23 flex-col items-center justify-between rounded-lg bg-gray-100 px-2.5 py-2 sm:flex">
         <button>
-          <FaPlus className="w-2.5 text-pink-400" />
+          <FaPlus className="w-2.5 cursor-pointer text-pink-400 hover:text-purple-800" />
         </button>
 
         <span className="text-sm font-bold text-purple-800">
@@ -17,7 +17,7 @@ const CommentCard = ({ comment, currentUser, isReply = true }) => {
         </span>
 
         <button>
-          <FaMinus className="w-2.5 text-pink-400" />
+          <FaMinus className="w-2.5 cursor-pointer text-pink-400 hover:text-purple-800" />
         </button>
       </div>
 
@@ -43,19 +43,19 @@ const CommentCard = ({ comment, currentUser, isReply = true }) => {
           <div className="hidden sm:block">
             {isOwnComment ? (
               <div className="flex items-center gap-4">
-                <button className="flex items-center gap-1.5 text-sm font-bold text-red-400 hover:opacity-50">
+                <button className="flex cursor-pointer items-center gap-1.5 text-sm font-bold text-red-400 hover:opacity-50">
                   <FaTrash />
                   Delete
                 </button>
-                <button className="flex items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50">
+                <button className="flex cursor-pointer items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50">
                   <FaPen />
                   Edit
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50">
+              <div className="flex cursor-pointer items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50">
                 <FaReply className="w-3" />
-                <button>Reply</button>
+                <button className="cursor-pointer">Reply</button>
               </div>
             )}
           </div>
@@ -89,25 +89,21 @@ const CommentCard = ({ comment, currentUser, isReply = true }) => {
           {/* Reply button for small screens */}
           {isOwnComment ? (
             <div className="flex items-center gap-4">
-              <button className="flex items-center gap-1.5 text-sm font-bold text-red-400 hover:opacity-50">
+              <button className="flex cursor-pointer items-center gap-1.5 text-sm font-bold text-red-400 hover:opacity-50">
                 <FaTrash />
                 Delete
               </button>
-              <button className="flex items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50">
+              <button className="flex cursor-pointer items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50">
                 <FaPen />
                 Edit
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50 sm:hidden">
+            <div className="flex cursor-pointer items-center gap-1.5 text-sm font-bold text-purple-800 hover:opacity-50 sm:hidden">
               <FaReply className="w-3" />
-              <button>Reply</button>
+              <button className="cursor-pointer">Reply</button>
             </div>
           )}
-          {/* <div className="flex items-center gap-1.5 text-sm font-bold text-purple-800 sm:hidden">
-            <FaReply className="w-3" />
-            <button>Reply</button>
-          </div> */}
         </div>
       </div>
     </div>

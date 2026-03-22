@@ -59,7 +59,7 @@ const AddCommentForm = () => {
           <div>
             <button
               type="submit"
-              className="rounded-md bg-purple-600 px-6 py-2 font-semibold text-white uppercase hover:bg-purple-700"
+              className="cursor-pointer rounded-md bg-purple-600 px-6 py-2 font-semibold text-white uppercase hover:opacity-50"
             >
               Send
             </button>
