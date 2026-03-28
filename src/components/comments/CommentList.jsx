@@ -1,17 +1,17 @@
 import React from "react";
 import CommentThread from "./CommentThread";
-import { data } from "../../data";
-// import { useState } from "react";
 
-const CommentList = () => {
-  //   const [comments, setComments] = useState(data.comments);
+const CommentList = ({ comments, currentUser, setComments, onVote }) => {
   return (
     <div className="flex max-w-2xl flex-col gap-4">
-      {data.comments.map((comment) => (
+      {comments.map((comment) => (
         <CommentThread
           key={comment.id}
           comment={comment}
-          currentUser={data.currentUser}
+          currentUser={currentUser}
+          setComments={setComments}
+          onVote={onVote}
+          isReply={false}
         />
       ))}
     </div>

@@ -1,14 +1,14 @@
 import React from "react";
 import { FaPlus, FaMinus, FaReply, FaTrash, FaPen } from "react-icons/fa6";
 
-const CommentCard = ({ comment, currentUser, isReply = true }) => {
+const CommentCard = ({ comment, currentUser, onVote, isReply = true }) => {
   const isOwnComment = comment.user.username === currentUser.username;
 
   return (
     <div className="mx-auto flex max-w-2xl gap-4 rounded-lg bg-white p-4">
       {/* Score section for large screens */}
-      <div className="hidden h-23 flex-col items-center justify-between rounded-lg bg-gray-100 px-2.5 py-2 sm:flex">
-        <button>
+      <div className="hidden h-23 w-10 flex-col items-center justify-between rounded-lg bg-gray-100 py-2 sm:flex">
+        <button onClick={() => onVote(comment.id, "up")}>
           <FaPlus className="w-2.5 cursor-pointer text-pink-400 hover:text-purple-800" />
         </button>
 
@@ -16,7 +16,7 @@ const CommentCard = ({ comment, currentUser, isReply = true }) => {
           {comment.score}
         </span>
 
-        <button>
+        <button onClick={() => onVote(comment.id, "down")}>
           <FaMinus className="w-2.5 cursor-pointer text-pink-400 hover:text-purple-800" />
         </button>
       </div>
@@ -75,14 +75,14 @@ const CommentCard = ({ comment, currentUser, isReply = true }) => {
         <div className="flex items-center justify-between sm:hidden">
           {/* Score section for small screens */}
           <div className="flex w-25 items-center justify-between rounded-lg bg-gray-100 px-4 py-2.5 sm:hidden">
-            <button>
-              <FaPlus className="w-2.5 text-pink-400" />
+            <button onClick={() => onVote(comment.id, "up")}>
+              <FaPlus className="w-2.5 cursor-pointer text-pink-400 hover:text-purple-800" />
             </button>
             <span className="text-sm font-bold text-purple-800">
               {comment.score}
             </span>
-            <button>
-              <FaMinus className="w-2.5 text-pink-400" />
+            <button onClick={() => onVote(comment.id, "down")}>
+              <FaMinus className="w-2.5 cursor-pointer text-pink-400 hover:text-purple-800" />
             </button>
           </div>
 
