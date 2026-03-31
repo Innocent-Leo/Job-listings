@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { data } from "../../data";
 
-const AddCommentForm = () => {
+const AddCommentForm = ({ title = "send" }) => {
   const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
@@ -14,9 +14,10 @@ const AddCommentForm = () => {
   return (
     <div className="mx-auto max-w-2xl rounded-lg bg-white p-4">
       <form onSubmit={handleSubmit} className="">
+        {/* For Small Screens */}
         <div className="flex flex-col gap-4 sm:hidden">
           <textarea
-            className="w-full resize-none rounded-lg border border-gray-300 p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            className="w-full resize-none rounded-lg border border-gray-300 p-3 focus:ring-1 focus:ring-gray-800 focus:outline-none"
             rows="2"
             placeholder="Add a comment..."
             value={content}
@@ -48,7 +49,7 @@ const AddCommentForm = () => {
           />
 
           <textarea
-            className="w-full resize-none rounded-lg border border-gray-300 p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            className="w-full resize-none rounded-lg border border-gray-300 p-3 focus:ring-1 focus:ring-gray-800 focus:outline-none"
             rows="2"
             placeholder="Add a comment..."
             value={content}
@@ -59,9 +60,9 @@ const AddCommentForm = () => {
           <div>
             <button
               type="submit"
-              className="cursor-pointer rounded-md bg-purple-600 px-6 py-2 font-semibold text-white uppercase hover:opacity-50"
+              className="cursor-pointer rounded-md bg-purple-600 px-6 py-2 text-sm font-semibold text-white uppercase hover:opacity-50"
             >
-              Send
+              {title}
             </button>
           </div>
         </div>

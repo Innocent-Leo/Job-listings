@@ -1,7 +1,13 @@
 import React from "react";
 import CommentThread from "./CommentThread";
 
-const CommentList = ({ comments, currentUser, setComments, onVote }) => {
+const CommentList = ({
+  comments,
+  currentUser,
+  setComments,
+  onVote,
+  onReply,
+}) => {
   return (
     <div className="flex max-w-2xl flex-col gap-4">
       {comments.map((comment) => (
@@ -12,6 +18,7 @@ const CommentList = ({ comments, currentUser, setComments, onVote }) => {
           setComments={setComments}
           onVote={onVote}
           isReply={false}
+          onReply={onReply}
         />
       ))}
     </div>

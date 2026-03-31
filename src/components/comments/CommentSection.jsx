@@ -34,6 +34,25 @@ const CommentSection = () => {
     );
   };
 
+  const handleReply = (parentId, content, replyingTo) => {
+    setComments((prev) =>
+      updateComments(prev, parentId, (comment) => ({
+        ...comment,
+        replies: [
+          ...comment.replies,
+          {
+            id: Date.now(),
+            content,
+            createdAt: "just now",
+            score: 0,
+            replyingTo,
+            user: currentUser,
+          },
+        ],
+      })),
+    );
+  };
+
   return (
     <div className="space-y-4">
       <CommentList
@@ -41,6 +60,7 @@ const CommentSection = () => {
         currentUser={currentUser}
         setComments={setComments}
         onVote={handleVote}
+        onReply={handleReply}
       />
       <AddCommentForm />
     </div>

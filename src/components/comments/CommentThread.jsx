@@ -1,7 +1,13 @@
 import React from "react";
 import CommentCard from "./CommentCard";
 
-const CommentThread = ({ comment, currentUser, onVote, isReply = false }) => {
+const CommentThread = ({
+  comment,
+  currentUser,
+  onVote,
+  onReply,
+  isReply = false,
+}) => {
   return (
     <>
       <CommentCard
@@ -9,6 +15,7 @@ const CommentThread = ({ comment, currentUser, onVote, isReply = false }) => {
         currentUser={currentUser}
         onVote={onVote}
         isReply={isReply}
+        onReply={onReply}
       />
       {comment.replies?.length > 0 && (
         <div className="space-y-4 border-l-2 border-gray-200 pl-4 sm:ml-8 sm:pl-8">
