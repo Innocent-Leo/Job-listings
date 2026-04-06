@@ -131,7 +131,9 @@ const CommentCard = ({
       {showReply && (
         <div className="mt-2">
           <AddCommentForm
+            key={comment.id}
             title="reply"
+            initialValue={`@${comment.user.username} `}
             onSubmit={(content) => {
               onReply(comment.id, content, comment.user.username);
               setShowReply(false);

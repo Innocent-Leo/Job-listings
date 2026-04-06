@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { data } from "../../data";
 
-const AddCommentForm = ({ title = "send", onSubmit }) => {
-  const [content, setContent] = useState("");
+const AddCommentForm = ({ title = "send", onSubmit, initialValue = "" }) => {
+  const [content, setContent] = useState(initialValue || "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
