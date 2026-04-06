@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { FaPlus, FaMinus, FaReply, FaTrash, FaPen } from "react-icons/fa6";
 import AddCommentForm from "../form/AddCommentForm";
 
-const CommentCard = ({ comment, currentUser, onVote, isReply = true }) => {
+const CommentCard = ({
+  comment,
+  currentUser,
+  onVote,
+  onReply,
+  isReply = true,
+}) => {
   const isOwnComment = comment.user.username === currentUser.username;
 
   const [showReply, setShowReply] = useState(false);
@@ -124,7 +130,13 @@ const CommentCard = ({ comment, currentUser, onVote, isReply = true }) => {
 
       {showReply && (
         <div className="mt-2">
-          <AddCommentForm title="reply" />
+          <AddCommentForm
+            title="reply"
+            onSubmit={(content) => {
+              onReply(comment.id, content, comment.user.username);
+              setShowReply(false);
+            }}
+          />
         </div>
       )}
     </div>

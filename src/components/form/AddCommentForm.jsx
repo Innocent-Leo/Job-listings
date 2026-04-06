@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { data } from "../../data";
 
-const AddCommentForm = ({ title = "send" }) => {
+const AddCommentForm = ({ title = "send", onSubmit }) => {
   const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // For now, just log; later integrate with state
-    console.log("New comment:", content);
+    if (!content.trim()) return;
+
+    onSubmit(content);
     setContent("");
   };
 
@@ -60,6 +61,10 @@ const AddCommentForm = ({ title = "send" }) => {
           <div>
             <button
               type="submit"
+              onClick={() => {
+                setReplyText("");
+                setShowReply(false);
+              }}
               className="cursor-pointer rounded-md bg-purple-600 px-6 py-2 text-sm font-semibold text-white uppercase hover:opacity-50"
             >
               {title}
